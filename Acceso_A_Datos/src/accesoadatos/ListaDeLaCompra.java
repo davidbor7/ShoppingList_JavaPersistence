@@ -1,15 +1,28 @@
 package accesoadatos;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
+/**
+ * The Class ListaDeLaCompra.
+ * This Class creates an object of shopping list type
+ * @author David Borrego
+ * @version 07/11/2019
+ */
 public class ListaDeLaCompra implements Serializable{
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	/** Shopping List name */
 	private String nombreLista;
+	
+	/** Shopping List items. */
 	private List<ArticuloAComprar> lista_de_articulos;
 
+	/**
+	 * Instantiates a new Shopping List withouth name.
+	 */
 	public ListaDeLaCompra() {
 
 		this.nombreLista = "";
@@ -17,6 +30,11 @@ public class ListaDeLaCompra implements Serializable{
 
 	}
 
+	/**
+	 * Instantiates a new Shopping List.
+	 *
+	 * @param nombreLista the Shopping List name
+	 */
 	public ListaDeLaCompra(String nombreLista) {
 
 		this.nombreLista = nombreLista;
@@ -24,24 +42,44 @@ public class ListaDeLaCompra implements Serializable{
 	}
 
 
+	/**
+	 * Gets the Shopping List name
+	 *
+	 * @return the string
+	 */
 	public String getNombreLista() {
 
 		return this.nombreLista;
 	}
 
 
+	/**
+	 * Sets the Shopping List name.
+	 *
+	 * @param nombreLista the new Shopping List name
+	 */
 	public void setNombreLista(String nombreLista) {
 
 		this.nombreLista = nombreLista;
 
 	}
 
+	/**
+	 * Add Item.
+	 *
+	 * @param articulo the Item
+	 */
 	public void agregarProductoAComprar(ArticuloAComprar articulo) {
 
 		this.lista_de_articulos.add(articulo);
 
 	}
 
+	/**
+	 * Delete Item.
+	 *
+	 * @param descripcionArticulo the Item propierties
+	 */
 	public void eliminarArticulo (String descripcionArticulo) {
 
 		String descripcion = descripcionArticulo;
@@ -61,6 +99,12 @@ public class ListaDeLaCompra implements Serializable{
 			System.out.println("ERROR.NO HAS INTRODUCIDO CORRECTAMENTE EL NOMBRE DEL ARTÍCULO.");
 		}
 	}
+	
+	/**
+	 * Gets Items in the Shopping List.
+	 *
+	 * @return the Items
+	 */
 	public List <ArticuloAComprar> getArticulos(){
 
 		return lista_de_articulos;

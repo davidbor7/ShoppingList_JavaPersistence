@@ -4,22 +4,35 @@ import java.io.*;
 
 public class Principal
 {
+	
+	/**
+	 * The main method.
+	 *@author David Borrego
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @version 07/11/2019
+	 */
+
+	static boolean key;
+	static boolean key2;
+	static String nombre_de_la_lista;
+	static String opcion_elegida_string;
+	static int opcion_elegida_int;
+	static String articulo_seleccionado_string;
+	static int articulo_seleccionado_int;
+	static File fichero;
+	static Object aux;
+	static BufferedReader lectura;
 
 
 	public static void main(String[] args) throws IOException
 	{
 
-		//------------CREATE VARIABLES------------
-		boolean key = true;
-		boolean key2 = true;
-		BufferedReader lectura = new BufferedReader (new InputStreamReader (System.in));
-		String nombre_de_la_lista;
-		String opcion_elegida_string;
-		int opcion_elegida_int;
-		String articulo_seleccionado_string;
-		int articulo_seleccionado_int;
-		File fichero;
-		Object aux;
+		//------------INICIALIZE VARIABLES------------
+
+		key = true;
+		key2 = true;
+		lectura = new BufferedReader (new InputStreamReader (System.in));
 
 		ArticuloAComprar[] stock_de_articulos = new ArticuloAComprar[10];
 		stock_de_articulos[0] = new ArticuloAComprar("Caja de Mantecados", 200, "g");
@@ -45,6 +58,8 @@ public class Principal
 		lista2.agregarProductoAComprar(stock_de_articulos[9]);
 		lista3.agregarProductoAComprar(stock_de_articulos[4]);
 
+
+
 		do{
 			System.err.println("------ELIJA UNA LISTA------");
 			System.out.println();
@@ -58,11 +73,17 @@ public class Principal
 			opcion_elegida_string = lectura.readLine();
 			opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
 
+
+			/**
+			 *First control structure with switch to first list
+			 */
+
 			switch (opcion_elegida_int)
 			{
 			case 1:
 
 				do {
+					
 
 					System.out.println();
 					System.err.println("\n------ELIJA UNA ACCIÓN------");
@@ -79,12 +100,16 @@ public class Principal
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
 
+					/**
+					 *Second control structure with switch to first list
+					 */
+
 					switch (opcion_elegida_int){
 
 					case 1:	
 						System.out.print("EL NOMBRE DE LA LISTA ES: " +lista1.getNombreLista()+ "\n");
 						System.out.println();
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -100,6 +125,14 @@ public class Principal
 						nombre_de_la_lista = lectura.readLine();
 						lista1.setNombreLista(nombre_de_la_lista);
 						key2 = true;
+						try 
+						{
+							Thread.sleep(100);
+						} catch (InterruptedException e)
+						{
+
+							e.printStackTrace();
+						}
 						break;	
 
 					case 3:
@@ -117,7 +150,7 @@ public class Principal
 						articulo_seleccionado_int = Integer.parseInt(articulo_seleccionado_string);		
 						lista1.agregarProductoAComprar(stock_de_articulos[articulo_seleccionado_int - 1]); //LE RESTAMOS 1 PARA QUE SELECCIONE EL ELEMENTO CORRECTO DEL ARRAY
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -136,7 +169,7 @@ public class Principal
 						articulo_seleccionado_string = lectura.readLine();						
 						lista1.eliminarArticulo(articulo_seleccionado_string);	
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -152,7 +185,7 @@ public class Principal
 						imprime_articulos_de_la_lista(lista1);
 						System.out.println();
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -164,9 +197,9 @@ public class Principal
 						break;
 
 					case 6:
-						key2 = false;
-						key = true;
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						key2 = false;//Skip to first control structure
+						key = true;//Enable first control structure
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -224,6 +257,10 @@ public class Principal
 
 				break;
 
+
+				/**
+				 *First control structure with switch to second list
+				 */	
 			case 2:
 
 				do
@@ -243,12 +280,17 @@ public class Principal
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
 
+					
+
+					/**
+					 *Second control structure with switch to second list
+					 */	
 					switch (opcion_elegida_int)
 					{
 					case 1:	
 						System.out.print("EL NOMBRE DE LA LISTA ES: " +lista2.getNombreLista()+ "\n");
 						System.out.println();
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -281,7 +323,7 @@ public class Principal
 						articulo_seleccionado_int = Integer.parseInt(articulo_seleccionado_string);		
 						lista2.agregarProductoAComprar(stock_de_articulos[articulo_seleccionado_int - 1]); //LE RESTAMOS 1 PARA QUE SELECCIONE EL ELEMENTO CORRECTO DEL ARRAY
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -300,7 +342,7 @@ public class Principal
 						articulo_seleccionado_string = lectura.readLine();						
 						lista2.eliminarArticulo(articulo_seleccionado_string);	
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -316,7 +358,7 @@ public class Principal
 						imprime_articulos_de_la_lista(lista2);
 						System.out.println();
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -328,9 +370,9 @@ public class Principal
 						break;
 
 					case 6:
-						key2 = false;
-						key = true;
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						key2 = false;//Skip to first control structure
+						key = true;//Enable first control structure
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -370,7 +412,7 @@ public class Principal
 						System.out.println();
 						System.err.println("EL CARÁCTER INTRODUCIDO NO ES VÁLIDO");
 						System.out.println();
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -387,6 +429,9 @@ public class Principal
 
 				break;
 
+				/**
+				 *First control structure with switch to third list
+				 */
 			case 3:
 
 				do 
@@ -406,12 +451,15 @@ public class Principal
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
 
+					/**
+					 *Second control structure with switch to third list
+					 */
 					switch (opcion_elegida_int)
 					{
 					case 1:	
 						System.out.print("EL NOMBRE DE LA LISTA ES: " +lista3.getNombreLista()+ "\n");
 						System.out.println();
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -421,14 +469,14 @@ public class Principal
 						}
 						key2 = true;
 						break;
-						
+
 					case 2:
 						System.out.println("ESCRIBA EL NUEVO NOMBRE DE LA LISTA: ");
 						nombre_de_la_lista = lectura.readLine();
 						lista3.setNombreLista(nombre_de_la_lista);
 						key2 = true;
 						break;
-						
+
 					case 3:
 						System.out.println();
 						System.out.println("------SELECCIONA UNO DE LOS ARTÍCULOS DISPONIBLES PARA AGREGARLO A LA LISTA------");
@@ -444,7 +492,7 @@ public class Principal
 						articulo_seleccionado_int = Integer.parseInt(articulo_seleccionado_string);		
 						lista3.agregarProductoAComprar(stock_de_articulos[articulo_seleccionado_int - 1]); //LE RESTAMOS 1 PARA QUE SELECCIONE EL ELEMENTO CORRECTO DEL ARRAY
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -454,7 +502,7 @@ public class Principal
 						}
 						key2 = true;
 						break;	
-						
+
 					case 4:
 						System.out.println();
 						imprime_articulos_de_la_lista(lista3);
@@ -463,7 +511,7 @@ public class Principal
 						articulo_seleccionado_string = lectura.readLine();						
 						lista3.eliminarArticulo(articulo_seleccionado_string);	
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -479,7 +527,7 @@ public class Principal
 						imprime_articulos_de_la_lista(lista3);
 						System.out.println();
 
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -491,9 +539,9 @@ public class Principal
 						break;
 
 					case 6:
-						key2 = false;
-						key = true;
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						key2 = false;//Skip to first control structure
+						key = true;//Enable first control structure
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -531,7 +579,7 @@ public class Principal
 						System.out.println();
 						System.err.println("EL CARÁCTER INTRODUCIDO NO ES VÁLIDO");
 						System.out.println();
-						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
+						try 
 						{
 							Thread.sleep(100);
 						} catch (InterruptedException e)
@@ -563,6 +611,11 @@ public class Principal
 		}while(key==true);
 	}
 
+	/**
+	 * Print the items inside a Shopping List
+	 * 
+	 * @param lista the Shopping List
+	 */
 	public static void imprime_articulos_de_la_lista(ListaDeLaCompra lista)
 	{
 		for (int i = 0; i < lista.getArticulos().size(); i++)
