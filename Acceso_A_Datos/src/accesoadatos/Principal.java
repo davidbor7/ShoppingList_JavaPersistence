@@ -4,10 +4,12 @@ import java.io.*;
 
 public class Principal
 {
-	
+
 
 	public static void main(String[] args) throws IOException
 	{
+
+		//------------CREATE VARIABLES------------
 		boolean key = true;
 		boolean key2 = true;
 		BufferedReader lectura = new BufferedReader (new InputStreamReader (System.in));
@@ -20,7 +22,6 @@ public class Principal
 		Object aux;
 
 		ArticuloAComprar[] stock_de_articulos = new ArticuloAComprar[10];
-
 		stock_de_articulos[0] = new ArticuloAComprar("Caja de Mantecados", 200, "g");
 		stock_de_articulos[1] = new ArticuloAComprar("Paquete de Arroz", 1, "Kg");
 		stock_de_articulos[2] = new ArticuloAComprar("Paquete de Lentejas", 2, "Kg");
@@ -32,22 +33,17 @@ public class Principal
 		stock_de_articulos[8] = new ArticuloAComprar("Surtido de Pasteles", 8, "Ud.");
 		stock_de_articulos[9] = new ArticuloAComprar("Paquete de Patatas", 50, "g");
 
-
 		ListaDeLaCompra lista1 = new ListaDeLaCompra("LISTA-1");
 		ListaDeLaCompra lista2 = new ListaDeLaCompra("LISTA-2");
 		ListaDeLaCompra lista3 = new ListaDeLaCompra("LISTA-3");
-
 		lista1.agregarProductoAComprar(stock_de_articulos[0]);
 		lista1.agregarProductoAComprar(stock_de_articulos[3]);
 		lista1.agregarProductoAComprar(stock_de_articulos[5]);
 		lista1.agregarProductoAComprar(stock_de_articulos[7]);
-
 		lista2.agregarProductoAComprar(stock_de_articulos[1]);
 		lista2.agregarProductoAComprar(stock_de_articulos[2]);
 		lista2.agregarProductoAComprar(stock_de_articulos[9]);
-
 		lista3.agregarProductoAComprar(stock_de_articulos[4]);
-
 
 		do{
 			System.err.println("------ELIJA UNA LISTA------");
@@ -68,7 +64,6 @@ public class Principal
 
 				do {
 
-
 					System.out.println();
 					System.err.println("\n------ELIJA UNA ACCIÓN------");
 					System.out.println("1. NOMBRE DE LA LISTA ");
@@ -84,10 +79,8 @@ public class Principal
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
 
-
-
 					switch (opcion_elegida_int){
-					
+
 					case 1:	
 						System.out.print("EL NOMBRE DE LA LISTA ES: " +lista1.getNombreLista()+ "\n");
 						System.out.println();
@@ -101,12 +94,14 @@ public class Principal
 						}
 						key2 = true;
 						break;
+
 					case 2:
 						System.out.println("ESCRIBA EL NUEVO NOMBRE DE LA LISTA: ");
 						nombre_de_la_lista = lectura.readLine();
 						lista1.setNombreLista(nombre_de_la_lista);
 						key2 = true;
 						break;	
+
 					case 3:
 						System.out.println();
 						System.out.println("------SELECCIONA UNO DE LOS ARTÍCULOS DISPONIBLES PARA AGREGARLO A LA LISTA------");
@@ -132,6 +127,7 @@ public class Principal
 						}
 						key2 = true;
 						break;	
+
 					case 4:
 						System.out.println();
 						imprime_articulos_de_la_lista(lista1);
@@ -152,7 +148,6 @@ public class Principal
 						break;
 
 					case 5:
-
 						System.out.println();
 						imprime_articulos_de_la_lista(lista1);
 						System.out.println();
@@ -169,7 +164,6 @@ public class Principal
 						break;
 
 					case 6:
-
 						key2 = false;
 						key = true;
 						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
@@ -192,11 +186,10 @@ public class Principal
 
 
 						break;
-						
-					case 8:	
 
+					case 8:	
 						fichero = new File("Copia_Seguridad_Lista_1.dat");
-						
+
 						try
 						{
 							ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
@@ -207,7 +200,7 @@ public class Principal
 						{
 							e1.printStackTrace();
 						}
-						
+
 						break;
 
 					default:
@@ -233,9 +226,8 @@ public class Principal
 
 			case 2:
 
-				do {
-
-
+				do
+				{
 					System.out.println();
 					System.err.println("\n------ELIJA UNA ACCIÓN------");
 					System.out.println("1. NOMBRE DE LA LISTA ");
@@ -250,8 +242,6 @@ public class Principal
 
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
-
-
 
 					switch (opcion_elegida_int)
 					{
@@ -268,12 +258,14 @@ public class Principal
 						}
 						key2 = true;
 						break;
+
 					case 2:
 						System.out.println("ESCRIBA EL NUEVO NOMBRE DE LA LISTA: ");
 						nombre_de_la_lista = lectura.readLine();
 						lista2.setNombreLista(nombre_de_la_lista);
 						key2 = true;
 						break;	
+
 					case 3:
 						System.out.println();
 						System.out.println("------SELECCIONA UNO DE LOS ARTÍCULOS DISPONIBLES PARA AGREGARLO A LA LISTA------");
@@ -299,6 +291,7 @@ public class Principal
 						}
 						key2 = true;
 						break;	
+
 					case 4:
 						System.out.println();
 						imprime_articulos_de_la_lista(lista2);
@@ -319,7 +312,6 @@ public class Principal
 						break;
 
 					case 5:
-
 						System.out.println();
 						imprime_articulos_de_la_lista(lista2);
 						System.out.println();
@@ -336,7 +328,6 @@ public class Principal
 						break;
 
 					case 6:
-
 						key2 = false;
 						key = true;
 						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
@@ -350,7 +341,6 @@ public class Principal
 						break;
 
 					case 7:	
-
 						fichero = new File("Copia_Seguridad_Lista_2.dat");
 						ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
 
@@ -359,11 +349,10 @@ public class Principal
 
 
 						break;
-						
-					case 8:	
 
+					case 8:	
 						fichero = new File("Copia_Seguridad_Lista_2.dat");
-						
+
 						try
 						{
 							ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
@@ -374,7 +363,7 @@ public class Principal
 						{
 							e1.printStackTrace();
 						}
-						
+
 						break;
 
 					default:
@@ -400,9 +389,8 @@ public class Principal
 
 			case 3:
 
-				do {
-
-
+				do 
+				{
 					System.out.println();
 					System.err.println("\n------ELIJA UNA ACCIÓN------");
 					System.out.println("1. NOMBRE DE LA LISTA ");
@@ -417,8 +405,6 @@ public class Principal
 
 					opcion_elegida_string = lectura.readLine();
 					opcion_elegida_int = Integer.parseInt(opcion_elegida_string);
-
-
 
 					switch (opcion_elegida_int)
 					{
@@ -435,12 +421,14 @@ public class Principal
 						}
 						key2 = true;
 						break;
+						
 					case 2:
 						System.out.println("ESCRIBA EL NUEVO NOMBRE DE LA LISTA: ");
 						nombre_de_la_lista = lectura.readLine();
 						lista3.setNombreLista(nombre_de_la_lista);
 						key2 = true;
-						break;	
+						break;
+						
 					case 3:
 						System.out.println();
 						System.out.println("------SELECCIONA UNO DE LOS ARTÍCULOS DISPONIBLES PARA AGREGARLO A LA LISTA------");
@@ -466,6 +454,7 @@ public class Principal
 						}
 						key2 = true;
 						break;	
+						
 					case 4:
 						System.out.println();
 						imprime_articulos_de_la_lista(lista3);
@@ -486,7 +475,6 @@ public class Principal
 						break;
 
 					case 5:
-
 						System.out.println();
 						imprime_articulos_de_la_lista(lista3);
 						System.out.println();
@@ -503,7 +491,6 @@ public class Principal
 						break;
 
 					case 6:
-
 						key2 = false;
 						key = true;
 						try //ESTO SE AÑADE PARA GUARDAR EL ORDEN DE IMPRESIÓN EN LA CONSOLA
@@ -517,20 +504,16 @@ public class Principal
 						break;
 
 					case 7:	
-
 						fichero = new File("Copia_Seguridad_Lista_3.dat");
 						ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
 
 						oos.writeObject(lista3);
 						oos.close();
-
-
 						break;
-						
-					case 8:	
 
+					case 8:	
 						fichero = new File("Copia_Seguridad_Lista_3.dat");
-						
+
 						try
 						{
 							ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
@@ -541,7 +524,7 @@ public class Principal
 						{
 							e1.printStackTrace();
 						}
-						
+
 						break;
 
 					default:
@@ -578,13 +561,10 @@ public class Principal
 			} 
 
 		}while(key==true);
-
 	}
-
 
 	public static void imprime_articulos_de_la_lista(ListaDeLaCompra lista)
 	{
-
 		for (int i = 0; i < lista.getArticulos().size(); i++)
 		{
 			System.out.println(lista.getArticulos().get(i).características_articulo());
